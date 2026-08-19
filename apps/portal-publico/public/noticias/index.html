@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notícias | Portal das Feiras</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="noticia.css">
+</head>
+<body>
+  <div data-site-header></div>
+  <main class="noticia-publica-page">
+    <section id="listaNoticias" class="container lista-noticias" aria-labelledby="tituloLista">
+      <div class="noticias-layout">
+        <div class="noticias-coluna-principal">
+          <h1 id="tituloLista">Notícias</h1>
+          <p class="noticia-introducao">Informações, novidades e conteúdos publicados para quem acompanha as feiras do Distrito Federal.</p>
+          <div id="noticiasGrid" class="noticias-lista-vertical"><p id="listaEstado">Carregando notícias...</p></div>
+          <nav id="paginacaoNoticias" class="paginacao-noticias" aria-label="Paginação das notícias"></nav>
+        </div>
+        <aside class="noticias-sidebar" aria-label="Publicidade">
+          <p class="sidebar-label">Publicidade</p>
+          <div id="bannerNoticia" class="banner-noticia"><span>Carregando anúncio...</span></div>
+          <div id="bannerNoticiaSecundario" class="banner-noticia banner-noticia-secundario" hidden></div>
+        </aside>
+      </div>
+    </section>
+    <div id="noticiaEstado" class="container noticia-estado hidden">Carregando notícia...</div>
+    <div id="noticiaLeituraLayout" class="container noticia-leitura-layout hidden">
+      <article id="noticiaConteudo" class="noticia-publica">
+        <div class="noticia-meta-top"><span id="noticiaCategoria" class="noticia-tag"></span></div>
+        <h1 id="noticiaTitulo"></h1>
+        <p id="noticiaData" class="noticia-data"></p>
+        <div id="bannerNoticiaTopo" class="banner-noticia banner-noticia-topo"><span>Carregando anúncio...</span></div>
+        <img id="noticiaImagem" class="noticia-capa" alt="">
+        <div id="noticiaTexto" class="noticia-texto"></div>
+        <a class="btn" href="index.html">← Voltar para notícias</a>
+      </article>
+      <aside class="noticia-sidebar" aria-label="Publicidade"><p class="sidebar-label">Publicidade</p><div id="bannerNoticiaLateral" class="banner-noticia banner-noticia-lateral"><span>Carregando anúncio...</span></div><div id="bannerNoticiaLateralSecundario" class="banner-noticia banner-noticia-secundario" hidden></div></aside>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script src="../shared/layout.js"></script>
+  <script src="noticia.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+.feirante-publico-link { display: block; color: inherit; text-decoration: none; }
+.feirante-publico-link:hover .feirante-publico-cabecalho h3 { color: #a92720; }
+.feirante-publico-cabecalho { min-height: auto; padding: .55rem 1.25rem .2rem; }
+.feirante-publico-conteudo { padding: .2rem 1.25rem 1rem; }
+.feirante-publico-conteudo .feirante-tags { margin-top: .15rem; margin-bottom: .65rem; }
+.feirante-publico-cabecalho h3 { transition: color .18s ease; }
+.feirante-publico-cabecalho p, .feirante-avatar { display: none; }
+.feirante-publico-descricao { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; max-height: 4.5em; margin-bottom: 1rem; }
+.feirante-horarios-link { border-top: 1px solid #edf0ee; padding-top: 14px; color: #a92720; font-size: 14px; font-weight: 700; }
+.feirante-horarios-link span { margin-right: 5px; }
+
+.feirante-leitura-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.5rem; align-items: start; padding: 2rem 20px 6rem; }
+.feirante-leitura-layout.hidden { display: none; }
+.feirante-leitura-card { min-width: 0; padding: 2rem; border: 1px solid #e3e7e4; border-radius: 4px; background: #fff; box-shadow: 0 5px 18px rgba(20, 55, 45, .08); }
+.feirante-leitura-meta { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .85rem; }
+.feirante-leitura-selo-local, .feirante-leitura-selo-categoria { display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 132px; height: 32px; padding: 0 .6rem; border-radius: 3px; color: #fff; font-size: .72rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.feirante-leitura-selo-local { background: #285b45; }
+.feirante-leitura-selo-categoria { background: #a92720; }
+.feirante-leitura-card h1 { width: 100%; max-width: 100%; margin: 0 0 1.35rem; color: #173d31; overflow-wrap: anywhere; word-break: break-word; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.08; letter-spacing: -.035em; }
+.feirante-leitura-imagem-wrap { overflow: hidden; border-radius: 3px; background: #e7e7e7; }
+.feirante-leitura-imagem { display: block; width: 100%; max-height: 260px; min-height: 130px; object-fit: cover; }
+.feirante-leitura-descricao { margin: 1.25rem 0 1.8rem; color: #46534c; font-size: 1.15rem; font-weight: 600; line-height: 1.6; }
+.feirante-leitura-info { display: grid; gap: 1.1rem; margin-bottom: 2rem; padding-top: 1.2rem; border-top: 1px solid #edf0ee; color: #414141; line-height: 1.7; }
+.feirante-leitura-info p { margin: 0; }
+.feirante-leitura-info p span { display: block; }
+.feirante-leitura-info p span + span { color: #68766e; font-size: .92rem; }
+.feirante-leitura-info strong { display: block; margin-bottom: .2rem; color: #285b45; }
+.feirante-horarios-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin-top: .7rem; }
+.feirante-horario-item { display: flex; align-items: center; justify-content: space-between; gap: .8rem; min-height: 48px; padding: .65rem .8rem; border: 1px solid #e2ebe5; border-radius: 8px; background: #f7faf8; }
+.feirante-horario-dia { color: #285b45; font-size: .88rem; font-weight: 800; }
+.feirante-horario-periodo { color: #35473d; font-size: .88rem; font-weight: 700; text-align: right; white-space: nowrap; }
+.feirante-horario-item.is-closed { border-color: #f0d8d5; background: #fff7f6; }
+.feirante-horario-item.is-closed .feirante-horario-dia, .feirante-horario-item.is-closed .feirante-horario-periodo { color: #a92720; }
+.feirante-sem-dado { display: block; margin-top: .7rem; padding: .75rem .85rem; border-radius: 8px; background: #f4f7f5; color: #68766e; font-size: .9rem; }
+.feirante-leitura-info ul { display: grid; gap: .35rem; margin: .45rem 0 0; padding: 0; list-style: none; }
+.feirante-leitura-info li { padding-bottom: .25rem; border-bottom: 1px solid #f0f2f0; }
+.feirante-leitura-aside { width: 300px; }
+.feirante-leitura-aside-bloco { min-height: 180px; padding: 1.2rem; border-radius: 3px; background: #285b45; color: #fff; font-size: .95rem; line-height: 1.6; box-shadow: 0 10px 24px rgba(20, 55, 45, .14); }
+.feirante-posts { padding: 0 0 1.25rem; }
+.feirante-posts h2 { margin: 0 0 .9rem; color: #2f2f2f; font-family: Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 500; }
+.feirante-post-recente { display: block; width: 100%; box-sizing: border-box; padding: .55rem 0; border-bottom: 1px solid #e8ece9; color: #8fbc9e; font-size: .92rem; line-height: 1.45; text-decoration: none; overflow-wrap: anywhere; word-break: break-word; white-space: normal; }
+.feirante-post-recente:hover { color: #285b45; }
+.feirante-posts-vazio { margin: 0; color: #7a847e; font-size: .9rem; line-height: 1.5; }
+.feirante-banner-publicidade { min-height: 420px; margin-top: .8rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 3px; background: #101010; color: #d5d8d6; text-align: center; box-shadow: 0 10px 24px rgba(20, 20, 20, .16); }
+.feirante-banner-publicidade a, .feirante-banner-publicidade img { display: block; width: 100%; height: 100%; }
+.feirante-banner-publicidade img { min-height: 420px; object-fit: cover; }
+.feirante-banner-publicidade span { display: block; padding: 1rem; font-size: .85rem; }
+.feirantes-detalhe-erro { margin-top: 3rem; margin-bottom: 5rem; }
+@media (max-width: 900px) { .feirante-leitura-layout { grid-template-columns: minmax(0, 1fr) 240px; gap: 1rem; } .feirante-leitura-aside { width: 240px; } }
+@media (max-width: 680px) { .feirante-leitura-layout { grid-template-columns: 1fr; padding: 1.25rem 14px 4rem; } .feirante-leitura-card { padding: 1.15rem; } .feirante-leitura-aside { width: auto; } .feirante-leitura-imagem { min-height: 130px; max-height: 220px; } .feirante-horarios-list { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .feirante-horario-item { align-items: flex-start; flex-direction: column; gap: .25rem; } .feirante-horario-periodo { text-align: left; } }
+
+
+.feirantes-inline-publicidade { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(var(--inline-sponsor-count, 2), minmax(0, 1fr)); gap: 14px; width: 100%; margin: .35rem 0 .8rem; }
+.feirantes-inline-banner { display: block; min-width: 0; overflow: hidden; border-radius: 10px; background: #285b45; box-shadow: 0 8px 22px rgba(20, 55, 45, .12); }
+.feirantes-inline-banner img { display: block; width: 100%; aspect-ratio: 3 / 1; min-height: 110px; object-fit: cover; }
+.feirantes-inline-banner:hover { transform: translateY(-2px); box-shadow: 0 11px 25px rgba(20, 55, 45, .18); }
+
+@media (max-width: 680px) {
+  .feirantes-inline-publicidade { grid-template-columns: 1fr; gap: 10px; margin: .7rem 0; }
+  .feirantes-inline-banner img { min-height: 105px; }
+}

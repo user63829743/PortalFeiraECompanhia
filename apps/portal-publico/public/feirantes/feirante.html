@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feirante | Portal das Feiras</title>
+  <meta name="description" content="Perfil público de um negócio participante do Portal das Feiras.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="feirantes.css">
+</head>
+<body class="pagina-feirantes pagina-feirante-detalhe">
+  <div data-site-header></div>
+  <main class="feirantes-publicos-main">
+    <div id="feiranteDetalheView" class="container feirante-leitura-layout hidden">
+      <article class="feirante-leitura-card">
+        <div class="feirante-leitura-meta"><span id="feiranteDetalheLocal" class="feirante-leitura-selo-local"></span><span id="feiranteDetalheCategoria" class="feirante-leitura-selo-categoria"></span></div>
+        <h1 id="feiranteDetalheTitulo"></h1>
+        <div class="feirante-leitura-imagem-wrap"><img id="feiranteDetalheImagem" class="feirante-leitura-imagem" alt=""></div>
+        <p id="feiranteDetalheDescricao" class="feirante-leitura-descricao"></p>
+        <div class="feirante-leitura-info"><p><strong>Localização atual da banca</strong><span id="feiranteDetalheLocalTexto"></span><span id="feiranteDetalheCep"></span></p><div><strong>Horários</strong><div id="feiranteDetalheHorarios"></div></div></div>
+        <a class="btn" href="index.html">← Voltar para feirantes</a>
+      </article>
+      <aside class="feirante-leitura-aside"><section class="feirante-posts"><h2>Posts recentes</h2><div id="feirantePostsRecentes"><p class="feirante-posts-vazio">Carregando posts...</p></div></section><div id="feiranteBannerPublicidade" class="feirante-banner-publicidade"><span>Publicidade</span></div></aside>
+    </div>
+    <div id="feirantesErroDetalhe" class="container feirantes-erro feirantes-detalhe-erro hidden"><h3>Não foi possível carregar este feirante</h3><p>O perfil pode não estar mais disponível.</p><a class="btn" href="index.html">Voltar para feirantes</a></div>
+  </main>
+  <div data-site-footer></div>
+  <script src="../shared/layout.js"></script>
+  <script src="feirantes.js" defer></script>
+</body>
+</html>

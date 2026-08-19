@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feirantes | Portal das Feiras</title>
+  <meta name="description" content="Conheça os feirantes e negócios das bancas aprovadas do Portal das Feiras.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="feirantes.css">
+</head>
+<body class="pagina-feirantes">
+  <div data-site-header></div>
+
+  <main class="feirantes-publicos-main">
+    <div id="feirantesListaView">
+    <section class="feirantes-hero">
+      <div class="container">
+        <p class="eyebrow">NEGÓCIOS DO PORTAL</p>
+        <h1>Conheça nossos feirantes</h1>
+        <p>Encontre os negócios das bancas aprovadas que fazem parte do Portal das Feiras.</p>
+      </div>
+    </section>
+
+    <section class="feirantes-listagem" aria-labelledby="titulo-feirantes">
+      <div class="container">
+        <div class="feirantes-toolbar">
+          <div>
+            <h2 id="titulo-feirantes">Feirantes e negócios</h2>
+            <p id="feirantesResumo">Carregando feirantes...</p>
+          </div>
+          <div class="feirantes-filtros">
+            <label class="sr-only" for="feirantesBusca">Buscar feirante</label>
+            <input id="feirantesBusca" type="search" placeholder="Buscar por nome, negócio, região ou categoria">
+            <label class="sr-only" for="feirantesRegiao">Filtrar por região</label>
+            <select id="feirantesRegiao"><option value="">Todas as regiões</option></select>
+          </div>
+        </div>
+        <div id="feirantesGrid" class="feirantes-grid" aria-live="polite"></div>
+        <div id="feirantesVazio" class="feirantes-vazio hidden"><h3>Nenhum feirante encontrado</h3><p>Tente buscar por outra palavra ou região.</p></div>
+        <div id="feirantesErro" class="feirantes-erro hidden"><h3>Não foi possível carregar os feirantes</h3><p>Atualize a página ou tente novamente mais tarde.</p></div>
+      </div>
+    </section>
+    </div>
+    <div id="feiranteDetalheView" class="container feirante-leitura-layout hidden">
+      <article class="feirante-leitura-card">
+        <div class="feirante-leitura-meta"><span id="feiranteDetalheLocal" class="feirante-leitura-selo-local"></span><span id="feiranteDetalheCategoria" class="feirante-leitura-selo-categoria"></span></div>
+        <h1 id="feiranteDetalheTitulo"></h1>
+        <div class="feirante-leitura-imagem-wrap"><img id="feiranteDetalheImagem" class="feirante-leitura-imagem" alt=""></div>
+        <p id="feiranteDetalheDescricao" class="feirante-leitura-descricao"></p>
+        <div class="feirante-leitura-info"><p><strong>Localização atual da banca</strong><span id="feiranteDetalheLocalTexto"></span><span id="feiranteDetalheCep"></span></p><div><strong>Horários</strong><div id="feiranteDetalheHorarios"></div></div></div>
+        <a class="btn" href="index.html">← Voltar para feirantes</a>
+      </article>
+      <aside class="feirante-leitura-aside"><section class="feirante-posts"><h2>Posts recentes</h2><div id="feirantePostsRecentes"><p class="feirante-posts-vazio">Carregando posts...</p></div></section><div id="feiranteBannerPublicidade" class="feirante-banner-publicidade"><span>Publicidade</span></div></aside>
+    </div>
+    <div id="feirantesErroDetalhe" class="container feirantes-erro feirantes-detalhe-erro hidden"><h3>Não foi possível carregar este feirante</h3><p>O perfil pode não estar mais disponível.</p><a class="btn" href="index.html">Voltar para feirantes</a></div>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="../shared/layout.js"></script>
+  <script src="feirantes.js" defer></script>
+</body>
+</html>

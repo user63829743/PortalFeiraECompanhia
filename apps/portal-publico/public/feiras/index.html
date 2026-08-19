@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feiras | Portal das Feiras</title>
+  <meta name="description" content="Encontre feiras ativas do Distrito Federal, seus endereços e horários.">
+  <link rel="stylesheet" href="../styles.css?v=feiras-interacao-20260818">
+</head>
+<body class="pagina-feiras">
+  <div data-site-header></div>
+
+  <main class="feiras-publicas-main">
+    <section class="feiras-hero">
+      <div class="container">
+        <p class="eyebrow">AGENDA DO PORTAL</p>
+        <h1>Encontre uma feira perto de você</h1>
+        <p>Consulte feiras ativas do Distrito Federal, localização, CEP e horários de funcionamento.</p>
+      </div>
+    </section>
+
+    <section class="feiras-listagem" aria-labelledby="titulo-feiras">
+      <div class="container">
+        <div class="feiras-toolbar">
+          <div>
+            <h2 id="titulo-feiras">Feiras ativas</h2>
+            <p id="feirasResumo">Carregando feiras...</p>
+          </div>
+          <div class="feiras-filtros">
+            <label class="sr-only" for="feirasBusca">Buscar feira</label>
+            <input id="feirasBusca" type="search" placeholder="Buscar por nome, região ou endereço">
+            <label class="sr-only" for="feirasRegiao">Filtrar por região</label>
+            <select id="feirasRegiao">
+              <option value="">Todas as regiões</option>
+            </select>
+          </div>
+        </div>
+        <div id="feirasGrid" class="feiras-grid" aria-live="polite"></div>
+        <div id="feirasVazio" class="feiras-vazio hidden">
+          <h3>Nenhuma feira encontrada</h3>
+          <p>Tente buscar por outra região ou palavra-chave.</p>
+        </div>
+        <div id="feirasErro" class="feiras-erro hidden">
+          <h3>Não foi possível carregar as feiras</h3>
+          <p>Atualize a página ou tente novamente mais tarde.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+  <script src="../shared/layout.js"></script>
+  <script src="feiras.js?v=feiras-interacao-20260818" defer></script>
+</body>
+</html>

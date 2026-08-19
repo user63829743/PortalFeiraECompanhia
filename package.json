@@ -1,0 +1,20 @@
+{
+  "name": "portal-das-feiras",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node apps/portal-publico/server.js",
+    "start:portal": "node apps/portal-publico/server.js",
+    "start:cadastro": "node apps/cadastro/server.js",
+    "start:admin": "node apps/admin/server.js",
+    "start:all": "node scripts/start-all.js",
+    "validate:vercel": "node scripts/validate-vercel.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

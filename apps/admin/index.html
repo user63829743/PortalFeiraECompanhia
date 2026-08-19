@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#a92720">
+  <title>Portal das Feiras — Admin</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+  <div id="loginView" class="login-page">
+    <section class="login-card">
+      <div class="brand-mark">PF</div>
+      <p class="eyebrow">Portal das Feiras</p>
+      <h1>Painel administrativo</h1>
+      <p class="muted">Acompanhe os cadastros de bancas e mantenha os status atualizados.</p>
+      <form id="loginForm" class="stack">
+        <label>Usuário<input name="username" autocomplete="username" required></label>
+        <label>Senha<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button primary" type="submit">Entrar</button>
+        <p id="loginMessage" class="form-message"></p>
+      </form>
+    </section>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark small">PF</span><span><strong>Portal das</strong><br>Feiras</span>
+      </div>
+      <div class="sidebar-label">Gestão</div>
+      <nav>
+        <button class="nav-item active" data-section="overview">Visão geral</button>
+
+      <button class="nav-item" data-section="feirantes">Feirantes</button>
+      <button class="nav-item" data-section="fairs">Feiras</button>
+        <button class="nav-item" data-section="registrations">Cadastros recebidos</button>
+        <button class="nav-item" data-section="sponsors">Patrocinadores</button>
+        <button class="nav-item" data-section="news">Notícias</button>
+      </nav>
+      <div class="sidebar-footer"><span class="status-dot"></span><span>Conectado ao painel</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Administração</p>
+          <h2 id="sectionTitle">Visão geral</h2>
+        </div>
+        <div class="top-actions"><span id="adminName" class="admin-name"></span><button id="logoutButton"
+            class="button ghost">Sair</button></div>
+      </header>
+      <div id="toast" class="toast hidden"></div>
+
+      <section id="overviewSection" class="section-view">
+        <div class="hero">
+          <div>
+            <p class="eyebrow light">Painel de controle</p>
+            <h1>Organize as bancas<br>do próximo encontro.</h1>
+            <p>Acompanhe cada cadastro recebido, analise os detalhes e atualize o status em poucos cliques.</p>
+          </div>
+          <div class="hero-stamp">FEIRAS<br><strong>2026</strong></div>
+        </div>
+        <div id="statsGrid" class="stats-grid"></div>
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Atividade recente</p>
+            <h3>Últimos cadastros</h3>
+          </div><button class="button outline" data-go="registrations">Ver todos</button>
+        </div>
+        <div id="recentTable" class="table-card"></div>
+      </section>
+
+      <section id="feirantesSection" class="section-view hidden">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Pessoas cadastradas</p>
+            <h3>Feirantes</h3>
+            <p class="muted">Consulte os feirantes dos cadastros reais enviados pelo portal.</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <input id="feirantesSearch" class="search" placeholder="Buscar por nome, empresa, região ou categoria...">
+          <select id="feirantesStatus" aria-label="Filtrar feirantes por status">
+            <option value="all">Todos os feirantes</option>
+            <option value="active">Ativas</option>
+            <option value="inactive">Inativas</option>
+          </select>
+          <button id="refreshFeirantes" class="button outline">Atualizar</button>
+        </div>
+        <div id="feirantesTable" class="table-card"></div>
+      </section>
+
+      <section id="fairsSection" class="section-view hidden">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Gestão</p>
+            <h3>Feiras cadastradas</h3>
+            <p class="muted">Cadastre e organize as feiras disponíveis no Portal das Feiras.</p>
+          </div>
+          <button id="newFairButton" class="button primary" type="button">+ Nova feira</button>
+        </div>
+        <div class="toolbar"><input id="fairsSearch" class="search" placeholder="Buscar por nome, região ou endereço..."><select id="fairsStatus"><option value="all">Todas as feiras</option><option value="active">Ativas</option><option value="inactive">Inativas</option></select><button id="refreshFairs" class="button outline">Atualizar</button></div>
+        <div id="fairsTable" class="table-card"></div>
+      </section>
+
+      <section id="sponsorsSection" class="section-view hidden">
+        <div class="section-heading">
+          <div><p class="eyebrow">Publicidade</p><h3>Patrocinadores</h3><p class="muted">Cadastre banners que serão exibidos na Home pública.</p></div>
+          <button id="newSponsorButton" class="button primary" type="button">+ Novo patrocinador</button>
+        </div>
+        <div class="toolbar"><input id="sponsorsSearch" class="search" placeholder="Buscar patrocinador..."><select id="sponsorsStatus"><option value="all">Todos</option><option value="active">Ativos</option><option value="inactive">Inativos</option></select><button id="refreshSponsors" class="button outline">Atualizar</button></div>
+        <div id="sponsorsTable" class="table-card"></div>
+      </section>
+
+      <section id="newsSection" class="section-view hidden">
+        <div class="section-heading">
+          <div><p class="eyebrow">Conteúdo</p><h3>Notícias</h3><p class="muted">Escreva, edite e publique notícias na Home do Portal das Feiras.</p></div>
+          <button id="newNewsButton" class="button primary" type="button">+ Nova notícia</button>
+        </div>
+        <div class="toolbar"><input id="newsSearch" class="search" placeholder="Buscar por título ou categoria..."><select id="newsStatus"><option value="all">Todas</option><option value="published">Publicadas</option><option value="draft">Rascunhos</option></select><button id="refreshNews" class="button outline">Atualizar</button></div>
+        <div id="newsTable" class="table-card"></div>
+      </section>
+
+      <section id="registrationsSection" class="section-view hidden">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Entrada</p>
+            <h3>Cadastros recebidos</h3>
+            <p class="muted">Novos pedidos enviados pelo portal público aparecem aqui.</p>
+          </div>
+        </div>
+        <div class="toolbar"><input id="registrationsSearch" class="search" placeholder="Buscar cadastro..."><select
+            id="registrationsStatus">
+            <option value="all">Todos</option>
+            <option value="analyzing">Em análise</option>
+            <option value="approved">Aprovadas</option>
+            <option value="rejected">Recusadas</option>
+          </select><button id="refreshRegistrations" class="button outline">Atualizar</button></div>
+        <div id="registrationsTable" class="table-card"></div>
+      </section>
+    </main>
+  </div>
+  <div id="fairModal" class="details-modal hidden" role="dialog" aria-modal="true" aria-labelledby="fairModalTitle">
+    <div class="details-backdrop" data-close-fair></div>
+    <section class="details-dialog fair-dialog">
+      <header class="details-header"><div><p class="eyebrow">Gestão de feiras</p><h2 id="fairModalTitle">Nova feira</h2></div><button class="details-close" type="button" data-close-fair aria-label="Fechar">×</button></header>
+      <form id="fairForm" class="fair-form">
+        <input type="hidden" name="id">
+        <div class="fair-form-grid">
+          <label>Nome da feira *<input name="name" required minlength="2" placeholder="Ex.: Feira do Produtor"></label>
+          <label>Região *<input name="region" required minlength="2" placeholder="Ex.: Ceilândia"></label>
+          <label>CEP<input name="cep" inputmode="numeric" maxlength="9" placeholder="Ex.: 70000-000"></label>
+          <label class="wide">Endereço ou ponto de referência<input name="address" placeholder="Ex.: Praça central, QNM 12"></label>
+          <label class="wide">Foto da feira <span class="muted">JPG, PNG ou WEBP até 5 MB</span><input name="photo" type="file" accept="image/jpeg,image/png,image/webp"><img id="fairPhotoPreview" class="fair-photo-preview hidden" alt="Pré-visualização da foto da feira"></label>
+          <fieldset class="schedule-field wide"><legend>Funcionamento semanal</legend><p class="muted">Defina horários diferentes para cada dia. Marque como fechado quando a feira não funcionar.</p><div class="schedule-grid"><div class="schedule-head"><span>Dia</span><span>Funcionamento</span><span>Abre</span><span>Fecha</span></div><div class="schedule-row" data-day="segunda"><strong>Segunda-feira</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de segunda-feira"><input type="time" data-schedule-close aria-label="Fechamento de segunda-feira"></div><div class="schedule-row" data-day="terca"><strong>Terça-feira</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de terça-feira"><input type="time" data-schedule-close aria-label="Fechamento de terça-feira"></div><div class="schedule-row" data-day="quarta"><strong>Quarta-feira</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de quarta-feira"><input type="time" data-schedule-close aria-label="Fechamento de quarta-feira"></div><div class="schedule-row" data-day="quinta"><strong>Quinta-feira</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de quinta-feira"><input type="time" data-schedule-close aria-label="Fechamento de quinta-feira"></div><div class="schedule-row" data-day="sexta"><strong>Sexta-feira</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de sexta-feira"><input type="time" data-schedule-close aria-label="Fechamento de sexta-feira"></div><div class="schedule-row" data-day="sabado"><strong>Sábado</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de sábado"><input type="time" data-schedule-close aria-label="Fechamento de sábado"></div><div class="schedule-row" data-day="domingo"><strong>Domingo</strong><select data-schedule-status><option value="open">Aberta</option><option value="closed">Fechada</option></select><input type="time" data-schedule-open aria-label="Abertura de domingo"><input type="time" data-schedule-close aria-label="Fechamento de domingo"></div></div><input type="hidden" name="daysHours"></fieldset>
+          <label>Status<select name="status"><option value="active">Ativa</option><option value="inactive">Inativa</option></select></label>
+          <label class="fair-featured-toggle"><input name="isFeatured" type="checkbox" value="true"><span><strong>Feira em destaque</strong><small>Exibir na Home pública. O limite é de três feiras ativas.</small></span></label>
+          <label class="wide">Descrição<textarea name="description" rows="4" placeholder="Descreva a feira, público e regras principais"></textarea></label>
+        </div>
+        <p id="fairFormMessage" class="form-message"></p>
+        <footer class="details-footer"><button class="button outline" type="button" data-close-fair>Cancelar</button><button class="button primary" type="submit">Salvar feira</button></footer>
+      </form>
+    </section>
+  </div>
+  <div id="sponsorModal" class="details-modal hidden" role="dialog" aria-modal="true" aria-labelledby="sponsorModalTitle">
+    <div class="details-backdrop" data-close-sponsor></div>
+    <section class="details-dialog fair-dialog">
+      <header class="details-header"><div><p class="eyebrow">Publicidade</p><h2 id="sponsorModalTitle">Novo patrocinador</h2></div><button class="details-close" type="button" data-close-sponsor aria-label="Fechar">×</button></header>
+      <form id="sponsorForm" class="fair-form">
+        <input type="hidden" name="id">
+        <div class="fair-form-grid">
+          <label>Nome do patrocinador *<input name="name" required minlength="2" placeholder="Ex.: Feira dos Importados"></label>
+          <label>Ordem de exibição<input name="displayOrder" type="number" min="0" value="0"></label>
+          <label class="wide">Link do anúncio<input name="targetUrl" type="url" placeholder="https://exemplo.com.br"></label>
+          <label class="wide">Banner <span class="muted">JPG, PNG ou WEBP até 5 MB</span><input name="image" type="file" accept="image/jpeg,image/png,image/webp" required><img id="sponsorPreview" class="fair-photo-preview hidden" alt="Pré-visualização do banner"></label>
+          <label>Status<select name="status"><option value="active">Ativo</option><option value="inactive">Inativo</option></select></label>
+          <label>Início da exibição<input name="startsAt" type="datetime-local"></label>
+          <label>Fim da exibição<input name="endsAt" type="datetime-local"></label>
+        </div>
+        <p id="sponsorFormMessage" class="form-message"></p>
+        <footer class="details-footer"><button class="button outline" type="button" data-close-sponsor>Cancelar</button><button class="button primary" type="submit">Salvar patrocinador</button></footer>
+      </form>
+    </section>
+  </div>
+  <div id="newsModal" class="details-modal hidden" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle">
+    <div class="details-backdrop" data-close-news></div>
+    <section class="details-dialog fair-dialog news-dialog">
+      <header class="details-header"><div><p class="eyebrow">Conteúdo editorial</p><h2 id="newsModalTitle">Nova notícia</h2></div><button class="details-close" type="button" data-close-news aria-label="Fechar">×</button></header>
+      <form id="newsForm" class="fair-form">
+        <input type="hidden" name="id">
+        <div class="fair-form-grid">
+          <label class="wide">Título *<input name="title" required minlength="3" placeholder="Ex.: Feira do Produtor recebe programação especial"></label>
+          <label>Local<input name="location" value="Distrito Federal" required placeholder="Ex.: Brasília"></label>
+          <label>Tag / categoria<input name="category" value="Portal das Feiras" required placeholder="Ex.: Feiras"></label>
+          <label>Autor<input name="author" value="Redação" required placeholder="Ex.: Redação"></label>
+          <label>Status<select name="status"><option value="draft">Rascunho</option><option value="published">Publicada</option></select></label>
+          <label class="wide">Resumo <span class="muted">Aparece no card da Home</span><textarea name="excerpt" rows="3" maxlength="280" placeholder="Resumo curto da notícia"></textarea></label>
+          <label class="wide">Texto completo *<textarea name="content" rows="10" required minlength="10" placeholder="Escreva o conteúdo completo da notícia"></textarea></label>
+          <label class="wide">Imagem <span class="muted">JPG, PNG ou WEBP até 5 MB</span><input name="image" type="file" accept="image/jpeg,image/png,image/webp"><img id="newsPreview" class="fair-photo-preview hidden" alt="Pré-visualização da notícia"></label>
+          <label>Data de publicação<div class="date-input-row"><input name="publishedAt" type="datetime-local"><button class="button outline date-today-button" type="button" data-news-today>Hoje</button></div></label>
+        </div>
+        <p id="newsFormMessage" class="form-message"></p>
+        <footer class="details-footer"><button class="button outline" type="button" data-close-news>Cancelar</button><button class="button primary" type="submit">Salvar notícia</button></footer>
+      </form>
+    </section>
+  </div>
+  <div id="stallModal" class="details-modal hidden" role="dialog" aria-modal="true" aria-labelledby="stallModalTitle">
+    <div class="details-backdrop" data-close-stall></div>
+    <section class="details-dialog fair-dialog stall-dialog">
+      <header class="details-header"><div><p class="eyebrow">Completar cadastro</p><h2 id="stallModalTitle">Editar banca</h2></div><button class="details-close" type="button" data-close-stall aria-label="Fechar">×</button></header>
+      <form id="stallForm" class="fair-form">
+        <input type="hidden" name="id">
+        <div class="fair-form-grid">
+          <label>Nome do negócio *<input name="businessName" required minlength="2"></label>
+          <label>Região *<input name="region" required minlength="2"></label>
+          <label>Categoria *<input name="category" required minlength="2"></label>
+          <label>Local da banca<input name="boothLocation" placeholder="Ex.: Box 24, ala central"></label>
+          <label>CEP da banca<input name="cep" inputmode="numeric" maxlength="9" placeholder="Ex.: 70000-000"></label>
+          <label class="wide">Descrição pública *<span class="muted">Mínimo de 10 caracteres</span><textarea name="publicDescription" rows="5" required minlength="10" placeholder="Texto que aparecerá no portal público"></textarea></label>
+          <label class="wide">Descrição interna<textarea name="description" rows="3" placeholder="Observações complementares"></textarea></label>
+          <label class="wide">Horários de funcionamento<textarea name="daysHours" rows="3" placeholder="Ex.: Segunda a sexta, das 8h às 18h"></textarea></label>
+          <label>Foto da banca *<span class="muted">JPG, PNG ou WEBP até 5 MB</span><input name="photo" type="file" accept="image/jpeg,image/png,image/webp"><img id="stallPhotoPreview" class="fair-photo-preview hidden" alt="Pré-visualização da foto da banca"></label>
+          <label>Logo da empresa *<span class="muted">JPG, PNG ou WEBP até 5 MB</span><input name="logo" type="file" accept="image/jpeg,image/png,image/webp"><img id="stallLogoPreview" class="fair-photo-preview hidden" alt="Pré-visualização do logo da empresa"></label>
+        </div>
+        <p class="muted stall-form-hint">A banca ficará Inativa enquanto faltar algum dado. Ao completar negócio, região, categoria, descrição, foto e logo, ela ficará Ativa automaticamente.</p>
+        <p id="stallFormMessage" class="form-message"></p>
+        <footer class="details-footer"><button class="button outline" type="button" data-close-stall>Cancelar</button><button class="button primary" type="submit">Salvar dados da banca</button></footer>
+      </form>
+    </section>
+  </div>
+  <div id="detailsModal" class="details-modal hidden" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+    <div class="details-backdrop" data-close-details></div>
+    <section class="details-dialog">
+      <header class="details-header">
+        <div><p class="eyebrow">Cadastro recebido</p><h2 id="detailsTitle">Detalhes da banca</h2></div>
+        <button class="details-close" type="button" data-close-details aria-label="Fechar">×</button>
+      </header>
+      <div id="detailsContent" class="details-content"></div>
+      <footer class="details-footer"><label>Status<select id="detailsStatus"><option value="analyzing">Em análise</option><option value="approved">Aprovada</option><option value="rejected">Recusada</option></select></label><div class="details-footer-actions"><button id="editStallButton" class="button outline" type="button">Editar banca</button><button id="saveDetailsStatus" class="button primary" type="button">Salvar status</button></div></footer>
+    </section>
+  </div>
+  <script src="/js/admin.js" defer></script>
+</body>
+
+</html>
